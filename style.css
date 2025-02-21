@@ -5,62 +5,45 @@
   box-sizing: border-box;
 }
 
-/* Tipografía y estilo general */
 body {
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
-  color: #333;
   line-height: 1.6;
 }
 
-/* Encabezado y navegación */
+/* Encabezado */
 header {
   background-color: #333;
   color: #fff;
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 header h1 {
   font-size: 24px;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-nav ul li a:hover {
-  color: #28a745;
-}
-
+/* Carrito */
 #cart {
   font-size: 18px;
 }
 
-/* Contenido principal */
+/* Contenido Principal */
 main {
   padding: 20px;
 }
 
-/* Grid para productos */
+/* Lista de Productos (grid responsivo) */
 .product-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
 
-/* Tarjeta de producto */
+/* Tarjeta de Producto */
 .product {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -96,7 +79,7 @@ main {
   margin-bottom: 10px;
 }
 
-/* Botón agregar al carrito */
+/* Botón "Agregar al carrito" */
 .add-to-cart {
   background-color: #28a745;
   color: #fff;
@@ -117,34 +100,45 @@ footer {
   color: #fff;
   text-align: center;
   padding: 15px;
+  margin-top: 20px;
 }
 
-/* Notificaciones "toast" */
-#toast {
+/* Toast Notifications */
+#toast-container {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #333;
+  z-index: 1000;
+}
+
+.toast {
+  background-color: #333;
   color: #fff;
-  padding: 15px 20px;
-  border-radius: 3px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
   opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s;
+  transform: translateY(20px);
+  animation: slideIn 0.5s forwards, fadeOut 0.5s 2.5s forwards;
 }
 
-#toast.show {
-  opacity: 1;
-}
-
-/* Media Queries para dispositivos pequeños */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  nav ul {
-    justify-content: center;
-    margin-top: 10px;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* Ajustes Responsivos */
+@media (max-width: 600px) {
+  header, footer {
+    text-align: center;
   }
 }
